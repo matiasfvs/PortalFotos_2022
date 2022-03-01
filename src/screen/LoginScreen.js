@@ -1,5 +1,5 @@
-import Left from './loginComponents/LoginLeft'
-import Right from './loginComponents/LoginRight'
+import Left from '../components/loginComponents/LoginLeft'
+import Right from '../components/loginComponents/LoginRight'
 
 
 
