@@ -1,5 +1,6 @@
-import {TextInput,Image, TouchableOpacity, Text, StyleSheet,View} from 'react-native-web';
+import {View} from 'react-native-web';
 import React, { Component } from 'react';
+import Menu_ from './../components/menuComponents/menu.js'
 
 class HomeScreen extends Component {
 
@@ -9,7 +10,7 @@ class HomeScreen extends Component {
     
     
           <View >
-             <Text>Aqui se arma la galeria</Text>
+             <Menu_></Menu_>
           </View>
         );
       }

@@ -1,0 +1,40 @@
+[
+    {
+        "id_zona": "1",
+        "desc_zona":"Zona Norte",
+        "salas":[{
+                "id_sala":"100",
+                "desc_sala":"Kika's"
+            },
+            {
+                "id_sala":"200",
+                "desc_sala":"Lider #123"
+            }
+        ]
+    } ,
+    {
+        "id_zona": "2",
+        "desc_zona":"Zona Centro",
+        "salas":[{
+                "id_sala":"300",
+                "desc_sala":"Unimarc Express"
+            },
+            {
+                "id_sala":"400",
+                "desc_sala":"Sisa #654"
+            }
+        ]
+    } ,
+    {
+        "id_zona": "3",
+        "desc_zona":"Zona Sur",
+        "salas":[{
+                "id_sala":"500",
+                "desc_sala":"Moe"
+            },
+            {
+                "id_sala":"600",
+                "desc_sala":"Bar ingles"
+            }]
+    }      
+]
