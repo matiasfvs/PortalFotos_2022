@@ -1,5 +1,6 @@
 import {TextInput,Image, TouchableOpacity, Text, StyleSheet,View} from 'react-native-web';
 import React, { Component } from 'react';
+import GaleriaImages from '../components/galeriaComponents/GaleriaImages'
 
 class HomeScreen extends Component {
 
@@ -9,7 +10,7 @@ class HomeScreen extends Component {
     
     
           <View >
-             <Text>Aqui se arma la galeria</Text>
+             <GaleriaImages/>
           </View>
         );
       }
