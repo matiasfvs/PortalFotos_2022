@@ -40,7 +40,7 @@ funSubMenu(){
 
     
     return (
-      <Menu className='menu'
+      <Menu 
         onClick={this.onClick}
         mode="inline"
       >
