@@ -1,15 +1,14 @@
 import React, { useState, useCallback } from 'react';
 import { render } from 'react-dom';
 import ImageViewer from 'react-simple-image-viewer';
+import '../../stylesGallery.css'
+import Menu_ from '../menuComponents/menu'
 
 const ImagesData = require('../../data/galeria.json')
 
 let images = new Array()
 
-
-
 ImagesData.forEach(js=>{
-
     js.foto.forEach(value=>{
         images.push(value)
     })
@@ -21,7 +20,6 @@ const GaleriaImages = () => {
     const [isViewerOpen, setIsViewerOpen] = useState(false);
 
     console.log('arreglo json',images)
-    //console.log('arreglo manual',images)
 
     const openImageViewer = useCallback((index) => {
       setCurrentImage(index);
@@ -34,14 +32,16 @@ const GaleriaImages = () => {
     };
 
     return(
-<div>
+<div className='container'>
+    <div className='menu'><Menu_></Menu_></div>
+    <div className='galeria'>
       {images.map((src, index) => (
         <img
           src={src}
           onClick={() => openImageViewer(index)}
           width="300"
           key={index}
-          style={{ margin: "2px" }}
+          className='imagen'
           alt=""
         />
       ))}
@@ -58,6 +58,7 @@ const GaleriaImages = () => {
           closeOnClickOutside={true}
         />
       )}
+      </div>
     </div>
   )
     }

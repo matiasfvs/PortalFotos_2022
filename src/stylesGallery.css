@@ -1,0 +1,19 @@
+.container{
+  display: flex;
+  background-color: #2a8891;
+  flex-direction: row;
+  height:800px;
+}
+.menu{
+  flex: 1;
+  color:white;
+  width: 300px;
+  padding-right:2% ;
+}
+.galeria{
+  flex: 3;
+  background-color: white;
+}
+.imagen{
+  padding: 2%;
+}

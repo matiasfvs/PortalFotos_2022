@@ -7,7 +7,19 @@
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
+    "babel": "^6.23.0",
+    "babel-install": "^2.1.0",
+    "babel-plugin-dynamic-import-node": "^2.3.3",
+    "babel-plugin-polyfill-corejs2": "^0.3.1",
+    "babel-plugin-polyfill-corejs3": "^0.5.2",
+    "babel-plugin-polyfill-regenerator": "^0.3.1",
+    "builtin-modules": "^3.2.0",
+    "core-js-compat": "^3.21.1",
+    "ejs": "^3.1.6",
+    "is-module": "^1.0.0",
+    "magic-string": "^0.26.1",
     "mssql": "^8.0.2",
+    "node-modules": "^1.0.1",
     "rc-menu": "^9.3.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -17,6 +29,9 @@
     "react-native-web": "^0.17.6",
     "react-scripts": "5.0.0",
     "react-simple-image-viewer": "^1.2.1",
+    "regenerator-transform": "^0.14.5",
+    "regexpu-core": "^5.0.1",
+    "to-fast-properties": "^4.0.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -42,5 +57,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/core": "^7.17.5"
   }
 }

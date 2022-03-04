@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import Menu, { SubMenu, Item as MenuItem } from 'rc-menu';
 import zonas from '../../data/zonas.json'
 import 'rc-menu/assets/index.css';
+import '../../stylesGallery.css'
 
 class HomeScreen extends Component {
   onClick(info) {
@@ -18,7 +19,7 @@ funSubMenu(){
     return(
             zonas.map((v) => {
                 
-           return (<SubMenu key={v.id_zona} title={v.desc_zona}>
+           return (<SubMenu className='menu' key={v.id_zona} title={v.desc_zona}>
                {
                    v.salas.map((i)=>{
                   return(  <MenuItem key={i.id_sala}> {i.desc_sala} </MenuItem>)
@@ -39,7 +40,7 @@ funSubMenu(){
 
     
     return (
-      <Menu
+      <Menu className='menu'
         onClick={this.onClick}
         mode="inline"
       >
@@ -50,7 +51,7 @@ funSubMenu(){
 
   render() {
     return (<div>
-      <div style={{ width: 400 }}>{this.getMenu()}</div>
+      <div>{this.getMenu()}</div>
     </div>);
   }
 }
