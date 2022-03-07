@@ -33,32 +33,38 @@ const GaleriaImages = () => {
 
     return(
 <div className='container'>
-    <div className='menu'><Menu_></Menu_></div>
-    <div className='galeria'>
-      {images.map((src, index) => (
-        <img
-          src={src}
-          onClick={() => openImageViewer(index)}
-          width="300"
-          key={index}
-          className='imagen'
-          alt=""
-        />
-      ))}
+    <div className="banner"><text>AQUI VA EL BANNER</text></div>
 
-      {isViewerOpen && (
-        <ImageViewer
-          src={images}
-          currentIndex={currentImage}
-          onClose={closeImageViewer}
-          disableScroll={false}
-          backgroundStyle={{
-            backgroundColor: "rgba(0,0,0,0.9)"
-          }}
-          closeOnClickOutside={true}
-        />
-      )}
-      </div>
+    <div className="flexDirection">
+
+            <div className='menu'><Menu_></Menu_></div>
+
+            <div className='galeria'>
+            {images.map((src, index) => (
+                <img
+                src={src}
+                onClick={() => openImageViewer(index)}
+                width="300"
+                key={index}
+                className='imagen'
+                alt=""
+                />
+            ))}
+
+            {isViewerOpen && (
+                <ImageViewer
+                src={images}
+                currentIndex={currentImage}
+                onClose={closeImageViewer}
+                disableScroll={false}
+                backgroundStyle={{
+                    backgroundColor: "rgba(0,0,0,0.9)"
+                }}
+                closeOnClickOutside={true}
+                />
+            )}
+            </div>
+    </div>
     </div>
   )
     }
