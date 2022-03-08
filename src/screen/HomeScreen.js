@@ -12,7 +12,6 @@ class HomeScreen extends Component {
     
           <View >
              <Menu_></Menu_>
-             <GaleriaImages/>
           </View>
         );
       }

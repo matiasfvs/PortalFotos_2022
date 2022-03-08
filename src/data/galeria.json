@@ -1,10 +1,28 @@
 [{
     "id_zona":10,
-    "id_sala": 1,
+    "id_sala": "100",
     "fecha": 20220125,
     "foto": [
-      "https://www.tonica.la/__export/1607890227377/sites/debate/img/2020/12/13/levi-ackerman_1.jpg_1037907269.jpg",
-      "https://i2.wp.com/codigoespagueti.com/wp-content/uploads/2021/08/Shingeki-no-Kyojin-temporada-final-cambios.jpg?fit=1280%2C720&quality=80&ssl=1",
-      "https://media.cnnchile.com/sites/2/2019/06/shingekinokyojin-d27f8df891c04b744f6f945772582b2a-600x400.jpg"
+    
+      "https://i2.wp.com/codigoespagueti.com/wp-content/uploads/2021/08/Shingeki-no-Kyojin-temporada-final-cambios.jpg?fit=1280%2C720&quality=80&ssl=1"
+      
     ]
-  }]
+  },
+  {
+    "id_zona":10,
+    "id_sala": "200",
+    "fecha": 20220125,
+    "foto": [
+      "https://media.cnnchile.com/sites/2/2019/06/shingekinokyojin-d27f8df891c04b744f6f945772582b2a-600x400.jpg"
+
+    ]
+  },
+  {
+    "id_zona":10,
+    "id_sala": "300",
+    "fecha": 20220125,
+    "foto": [
+      "https://www.tonica.la/__export/1607890227377/sites/debate/img/2020/12/13/levi-ackerman_1.jpg_1037907269.jpg"
+    ]
+  }
+]

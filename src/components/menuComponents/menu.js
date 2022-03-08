@@ -1,19 +1,24 @@
-import React, { Component } from 'react';
+import React, { useState } from "react";
+import {View,Text} from 'react-native-web';
 import ReactDOM from 'react-dom';
 import Menu, { SubMenu, Item as MenuItem } from 'rc-menu';
 import zonas from '../../data/zonas.json'
+import GaleriaImages from '../galeriaComponents/GaleriaImages'
 import 'rc-menu/assets/index.css';
 
-class HomeScreen extends Component {
-  onClick(info) {
-    console.log('click ', info);
+
+const MenuComponent = () => {
+  const [key, setKey] = useState(0);
+
+  
+  const onClick = (info) => {
+    //console.log('Key seleccionada: ', info.key);
+    setKey(info.key)
+    //console.log('Key del Onclick' ,key)
   }
 
-  funTest(){
-      console.log('FUN TEST')
-  }
-
-funSubMenu(){
+    
+  const funSubMenu = () => {
 
     return(
             zonas.map((v) => {
@@ -27,33 +32,34 @@ funSubMenu(){
                       
                   </SubMenu>
                   )
-                
             })
-              
     )
 }
 
-  getMenu() {
+const getMenu = () => {
 
-    //console.log(zonas)
-
-    
     return (
       <Menu
-        onClick={this.onClick}
+        onClick={(info) => onClick(info)}
         mode="inline"
       >
-        {this.funSubMenu()}
+        {funSubMenu()}
       </Menu>
     );
   }
 
-  render() {
+
     return (<div>
-      <div style={{ width: 400 }}>{this.getMenu()}</div>
+      <div style={{ width: 400 }}>
+        {getMenu()}
+        </div>
+    <Text> {key}</Text>
+    <GaleriaImages 
+    id_sala = {key}
+    />
     </div>);
-  }
+
 }
 
 
-export default HomeScreen;
+export default MenuComponent;

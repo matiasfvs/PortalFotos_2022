@@ -7,20 +7,22 @@ const ImagesData = require('../../data/galeria.json')
 let images = new Array()
 
 
-
-ImagesData.forEach(js=>{
-
-    js.foto.forEach(value=>{
-        images.push(value)
-    })
-});
-
-const GaleriaImages = () => {
+const GaleriaImages = (id_sala) => {
 
     const [currentImage, setCurrentImage] = useState(0);
     const [isViewerOpen, setIsViewerOpen] = useState(false);
 
-    console.log('arreglo json',images)
+    ImagesData.forEach(js=>{
+  
+      if(id_sala.id_sala === js.id_sala){
+        console.log('Dentro del if')
+        js.foto.forEach(value=>{
+          images.push(value)
+      })
+      }
+    });
+
+    //console.log('arreglo json',images)
     //console.log('arreglo manual',images)
 
     const openImageViewer = useCallback((index) => {
