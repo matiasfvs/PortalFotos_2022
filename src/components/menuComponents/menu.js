@@ -5,6 +5,7 @@ import Menu, { SubMenu, Item as MenuItem } from 'rc-menu';
 import zonas from '../../data/zonas.json'
 import GaleriaImages from '../galeriaComponents/GaleriaImages'
 import 'rc-menu/assets/index.css';
+import '../../stylesGallery.css'
 
 
 const MenuComponent = () => {
@@ -23,7 +24,7 @@ const MenuComponent = () => {
     return(
             zonas.map((v) => {
                 
-           return (<SubMenu key={v.id_zona} title={v.desc_zona}>
+           return (<SubMenu className='menu' key={v.id_zona} title={v.desc_zona}>
                {
                    v.salas.map((i)=>{
                   return(  <MenuItem key={i.id_sala}> {i.desc_sala} </MenuItem>)
