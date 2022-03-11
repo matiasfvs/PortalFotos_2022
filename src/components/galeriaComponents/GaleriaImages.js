@@ -2,30 +2,14 @@ import React, { useState, useCallback } from 'react';
 import { render } from 'react-dom';
 import ImageViewer from 'react-simple-image-viewer';
 import '../../stylesGallery.css'
-import Menu_ from '../menuComponents/menu'
 
-const ImagesData = require('../../data/galeria.json')
+const GaleriaImages = ({imagenes}) => {
 
-let images = new Array()
-
-
-const GaleriaImages = (id_sala) => {
+    console.log('imagenes', imagenes)
 
     const [currentImage, setCurrentImage] = useState(0);
-    const [isViewerOpen, setIsViewerOpen] = useState(false);
+    const [isViewerOpen, setIsViewerOpen] = useState(false);    
 
-    ImagesData.forEach(js=>{
-  
-      if(id_sala.id_sala === js.id_sala){
-        console.log('Dentro del if')
-        js.foto.forEach(value=>{
-          images.push(value)
-      })
-      }
-    });
-
-    //console.log('arreglo json',images)
-    //console.log('arreglo manual',images)
 
     const openImageViewer = useCallback((index) => {
       setCurrentImage(index);
@@ -38,28 +22,21 @@ const GaleriaImages = (id_sala) => {
     };
 
     return(
-<div className='container'>
-    <div className="banner"><text>AQUI VA EL BANNER</text></div>
 
-    <div className="flexDirection">
+             <div>
+      {imagenes[0]?.foto?.map((src, index) => (
+        <img
+        src={src}
+        onClick={() => openImageViewer(index)}
+        width="300"
+        key={index}
+        className='imagen'
+        alt=""
+        />))}
 
-            <div className='menu'><Menu_></Menu_></div>
-
-            <div className='galeria'>
-            {images.map((src, index) => (
-                <img
-                src={src}
-                onClick={() => openImageViewer(index)}
-                width="300"
-                key={index}
-                className='imagen'
-                alt=""
-                />
-            ))}
-
-            {isViewerOpen && (
+             {isViewerOpen && (
                 <ImageViewer
-                src={images}
+                src={imagenes[0].foto}
                 currentIndex={currentImage}
                 onClose={closeImageViewer}
                 disableScroll={false}
@@ -70,8 +47,6 @@ const GaleriaImages = (id_sala) => {
                 />
             )}
             </div>
-    </div>
-    </div>
   )
     }
 

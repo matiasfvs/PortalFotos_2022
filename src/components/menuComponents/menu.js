@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import {View,Text} from 'react-native-web';
 import ReactDOM from 'react-dom';
 import Menu, { SubMenu, Item as MenuItem } from 'rc-menu';
@@ -6,19 +6,34 @@ import zonas from '../../data/zonas.json'
 import GaleriaImages from '../galeriaComponents/GaleriaImages'
 import 'rc-menu/assets/index.css';
 import '../../stylesGallery.css'
+const ImagesData = require('../../data/galeria.json')
 
 
 const MenuComponent = () => {
   const [key, setKey] = useState(0);
+  const [imagenesSala,setImagenesSalas] = useState([])
 
-  
   const onClick = (info) => {
-    //console.log('Key seleccionada: ', info.key);
+    //setImagenes(imagenes)
+    //imagenes.pop()
     setKey(info.key)
-    //console.log('Key del Onclick' ,key)
+
   }
 
-    
+  // ImagesData.forEach(js=>{
+  //   if(key === js.id_sala){
+  //     imagenes.push(js.foto);
+  //     console.log('array del forich', js.foto)
+  //   }
+  // });
+
+  useEffect(()=>{
+    const salaFiltrada = ImagesData.filter(js=>key===js.id_sala)
+    setImagenesSalas(salaFiltrada)
+  }, [key])
+
+  
+
   const funSubMenu = () => {
 
     return(
@@ -50,15 +65,23 @@ const getMenu = () => {
   }
 
 
-    return (<div>
-      <div style={{ width: 400 }}>
+    return (
+    <div className="container">
+      <div className="flexDirection"> 
+      <div className="menu">
         {getMenu()}
+    </div>
+        <div className="galeria">
+        <GaleriaImages  id_sala = {key} imagenes= {imagenesSala}/>
         </div>
-    <Text> {key}</Text>
-    <GaleriaImages 
-    id_sala = {key}
-    />
-    </div>);
+    
+      </div>
+    <div>
+    </div>
+    </div>
+    )
+    
+    
 
 }
 
