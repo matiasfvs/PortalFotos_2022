@@ -7,11 +7,9 @@ import GaleriaImages from '../galeriaComponents/GaleriaImages'
 import 'rc-menu/assets/index.css';
 import '../../stylesGallery.css'
 
-
 const MenuComponent = () => {
-  const [key, setKey] = useState(0);
+  const [key, setKey] = useState();
 
-  
   const onClick = (info) => {
     //console.log('Key seleccionada: ', info.key);
     setKey(info.key)
@@ -54,7 +52,6 @@ const getMenu = () => {
       <div style={{ width: 400 }}>
         {getMenu()}
         </div>
-    <Text> {key}</Text>
     <GaleriaImages 
     id_sala = {key}
     />

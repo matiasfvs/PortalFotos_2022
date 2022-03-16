@@ -2,27 +2,38 @@ import React, { useState, useCallback } from 'react';
 import { render } from 'react-dom';
 import ImageViewer from 'react-simple-image-viewer';
 import '../../stylesGallery.css'
-import Menu_ from '../menuComponents/menu'
 
 const ImagesData = require('../../data/galeria.json')
 
-let images = new Array()
-
+let images = []
 
 const GaleriaImages = (id_sala) => {
 
     const [currentImage, setCurrentImage] = useState(0);
     const [isViewerOpen, setIsViewerOpen] = useState(false);
 
-    ImagesData.forEach(js=>{
-  
-      if(id_sala.id_sala === js.id_sala){
+    ImagesData.map((i)=>{
+      if(id_sala.id_sala === i.id_sala){
+        images.pop()
         console.log('Dentro del if')
-        js.foto.forEach(value=>{
+        i.foto.map((value)=>{
           images.push(value)
       })
+      console.log(images)
       }
-    });
+       })
+
+   // ImagesData.forEach(js=>{
+      //console.log(ImagesData)
+  
+     // if(id_sala.id_sala === js.id_sala){
+       // console.log('Dentro del if')
+        //js.foto.forEach(value=>{
+         // images.push(value)
+      //})
+      //console.log(images)
+     // }
+    //});
 
     //console.log('arreglo json',images)
     //console.log('arreglo manual',images)
@@ -42,8 +53,6 @@ const GaleriaImages = (id_sala) => {
     <div className="banner"><text>AQUI VA EL BANNER</text></div>
 
     <div className="flexDirection">
-
-            <div className='menu'><Menu_></Menu_></div>
 
             <div className='galeria'>
             {images.map((src, index) => (

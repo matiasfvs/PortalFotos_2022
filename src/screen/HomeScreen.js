@@ -1,7 +1,6 @@
 import {View} from 'react-native-web';
 import React, { Component } from 'react';
-
-import GaleriaImages from '../components/galeriaComponents/GaleriaImages'
+import Menu_ from '../components/menuComponents/menu'
 
 class HomeScreen extends Component {
 
