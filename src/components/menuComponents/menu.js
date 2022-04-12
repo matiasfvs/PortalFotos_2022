@@ -8,7 +8,6 @@ import 'rc-menu/assets/index.css';
 import '../../stylesGallery.css'
 const ImagesData = require('../../data/galeria.json')
 
-
 const MenuComponent = () => {
   const [key, setKey] = useState(0);
   const [imagenesSala,setImagenesSalas] = useState([])
