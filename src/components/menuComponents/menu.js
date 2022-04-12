@@ -20,13 +20,6 @@ const MenuComponent = () => {
 
   }
 
-  // ImagesData.forEach(js=>{
-  //   if(key === js.id_sala){
-  //     imagenes.push(js.foto);
-  //     console.log('array del forich', js.foto)
-  //   }
-  // });
-
   useEffect(()=>{
     const salaFiltrada = ImagesData.filter(js=>key===js.id_sala)
     setImagenesSalas(salaFiltrada)

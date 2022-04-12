@@ -7,10 +7,11 @@
 }
 .menu{
   flex: 1;
-  color:white;
+  color:whitesmoke;
   width: 100%;
   height: auto;
-  padding: 3px;  
+  padding: 3px; 
+
 }
 
 .galeria{

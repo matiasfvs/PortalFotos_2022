@@ -16,8 +16,11 @@
     "react-imgix": "^9.5.0",
     "react-native-elements": "^3.4.2",
     "react-native-web": "^0.17.6",
+    "react-redux": "^7.2.8",
     "react-scripts": "5.0.0",
     "react-simple-image-viewer": "^1.2.1",
+    "redux-devtools-extension": "^2.13.9",
+    "redux-thunk": "^2.4.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
