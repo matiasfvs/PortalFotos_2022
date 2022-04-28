@@ -1,0 +1,39 @@
+[
+  {
+    "id_zona":10,
+    "id_sala": "10",
+    "fecha": 20220125,
+    "data": [{
+      "id_categoria":"101",
+      "foto": [
+        "https://i1.wp.com/www.senpai.com.mx/wp-content/uploads/2021/12/Tengen-Uzui-Kimetsu-no-Yaiba.jpg?fit=1280%2C720&ssl=1",
+        "https://media.cnnchile.com/sites/2/2019/06/shingekinokyojin-d27f8df891c04b744f6f945772582b2a-600x400.jpg"
+      ]
+    },
+    {
+      "id_categoria":"102",
+      "foto": [
+        "https://i1.wp.com/www.senpai.com.mx/wp-content/uploads/2021/12/Tengen-Uzui-Kimetsu-no-Yaiba.jpg?fit=1280%2C720&ssl=1",
+        "https://media.cnnchile.com/sites/2/2019/06/shingekinokyojin-d27f8df891c04b744f6f945772582b2a-600x400.jpg"
+      ]
+    }
+  ]},
+  {
+    "id_zona":10,
+    "id_sala": "20",
+    "fecha": 20220125,
+    "id_categoria": "201",
+    "foto": [
+      "https://media.cnnchile.com/sites/2/2019/06/shingekinokyojin-d27f8df891c04b744f6f945772582b2a-600x400.jpg"
+    ]
+  },
+  {
+    "id_zona":10,
+    "id_sala": "300",
+    "fecha": 20220125,
+    "id_categoria": "101",
+    "foto": [
+      "https://i1.wp.com/www.senpai.com.mx/wp-content/uploads/2021/12/Tengen-Uzui-Kimetsu-no-Yaiba.jpg?fit=1280%2C720&ssl=1"
+    ]
+  }
+]

@@ -15,13 +15,12 @@ const MenuComponent = () => {
   const onClick = (info) => {
     //setImagenes(imagenes)
     //imagenes.pop()
-    console.log(info)
     setKey(info.key)
 
   }
 
   useEffect(()=>{
-    const salaFiltrada = ImagesData.filter(js=>key===js.id_categoria )
+    const salaFiltrada = ImagesData.filter(js=>key===js.id_sala)
     setImagenesSalas(salaFiltrada)
   }, [key])
 
@@ -35,17 +34,10 @@ const MenuComponent = () => {
            return (<SubMenu className='menu' key={v.id_zona} title={v.desc_zona}>
                {
                    v.salas.map((i)=>{
-                  return(  <SubMenu  key={i.id_sala} title={i.desc_sala}> 
-                  {
-                     i.categorias.map((c)=>{
-                      return(  <MenuItem  key={c.id_categoria}> {c.desc_categoria} </MenuItem>)
-                       })
-                  }
-                   </SubMenu>)
-                      
-
+                  return(  <MenuItem key={i.id_sala}> {i.desc_sala} </MenuItem>)
                    })
                }
+                      
                   </SubMenu>
                   )
             })
@@ -55,11 +47,12 @@ const MenuComponent = () => {
 const getMenu = () => {
 
     return (
-      <Menu    mode="inline"
-      onClick={(info) => onClick(info)}>
-
-      {funSubMenu()}
-    </Menu>
+      <Menu
+        onClick={(info) => onClick(info)}
+        mode="inline"
+      >
+        {funSubMenu()}
+      </Menu>
     );
   }
 
