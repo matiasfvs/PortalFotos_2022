@@ -8,7 +8,6 @@ const LoginRight = ()=> {
     return ( 
 
      <div>
-         <p>parrafo derecho</p>
         <InputName/>
      </div>
      

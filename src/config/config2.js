@@ -1,0 +1,8 @@
+module.exports = {
+    URL_BACKEND: process.env.REACT_APP_BASE_URL || 'http://localhost:3003',
+    URL_BASENAME: process.env.REACT_APP_BASENAME_URL || '',
+    MAX_FILESIZE: process.env.REACT_APP_MAX_FILESIZE || 5000000,
+    MAX_FILES_UPLOAD: process.env.REACT_APP_MAX_FILES_UPLOAD || 3,
+    MAX_SURVEY_QUESTIONS: process.env.REACT_APP_MAX_SURVEY_QUESTIONS || 10,
+    MAX_SURVEY_OPTIONS: process.env.REACT_APP_MAX_SURVEY_OPTIONS || 6,
+  };

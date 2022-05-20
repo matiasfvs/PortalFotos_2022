@@ -5,7 +5,7 @@ const LoginLeft = ()=> {
 
     return ( 
 
-     <div className='contentLeft'>
+     <div >
      <img src={ImageGds} className='imagenLogo'/>
      </div>
      
