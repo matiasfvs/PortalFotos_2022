@@ -11,29 +11,39 @@ const ImagesData = require('../../data/galeria.json')
 
 
 
-const MenuComponent = ({getFoto}) => {
+const MenuComponent = ({getFoto,dataJson}) => {
   const [key, setKey] = useState(0);
   const [imagenesSala,setImagenesSalas] = useState([])
   const [ImagesDatas,setImagenesData] = useState([])
- 
+  let dataJsonAPI = []
+  
+  function CargaData(){
+    dataJsonAPI = dataJson
+    console.log('carga data')
+  }
 
   const onClick = (info) => {
-    console.log(info)
+    //console.log(info)
     setKey(info.key)
 
   }
 
   useEffect(()=>{
-    setImagenesData(getFoto())
-    const salaFiltrada = ImagesDatas.filter(js=>key===js.id_categoria )
+    getFoto()
+    const salaFiltrada = ImagesData.filter(js=>key===js.id_categoria )
     setImagenesSalas(salaFiltrada)
+    console.log(salaFiltrada)
   }, [key])
 
-  //console.log('get foto',ImagesDatas)
+ 
+  
+
+ 
 
   const funSubMenu = () => {
-
+    console.log('carga menu')
     return(
+      
             zonas.map((v) => {
                 
            return (<SubMenu className='menu' key={v.id_zona} title={v.desc_zona}>
@@ -61,7 +71,6 @@ const getMenu = () => {
     return (
       <Menu    mode="inline"
       onClick={(info) => onClick(info)}>
-
       {funSubMenu()}
     </Menu>
     );
@@ -93,7 +102,7 @@ const mapStateToProps = (state) => {
   // Redux Store --> Component
   return {
     ...state.fotoReducer,
-    dataFoto:state.dataFoto
+    data:state.fotoReducer.data
   };
 };
 

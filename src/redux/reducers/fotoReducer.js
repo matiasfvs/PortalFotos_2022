@@ -1,7 +1,7 @@
 import * as types from '../constants/redux_constants'
 
 const initialState= {
-    dataFoto:null
+    data:[]
 }
 
 
@@ -11,7 +11,7 @@ const fotoReducer = (state = initialState, action) =>{
             console.log("DATA FOTO OK");
             return{
                 ...state,
-                dataFoto:action.data
+                data:action.data
             }
         }
         case types.FOTO_ERROR:{
