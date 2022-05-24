@@ -37,13 +37,13 @@ axios.defaults.timeout = API_TIMEOUT;
         const { data: res } = await axios.get("/portalfotospdv",{
 
         })
-        console.log('res antes del if:',res)
+        //console.log('res antes del if:',res)
         if (res) {
           dispatch(fotoOk(res));
-          console.log(res)
+          //console.log(res)
           //alert("Carga Enviada con Exito")
         } else {
-          console.log(res)
+          //console.log(res)
           dispatch(fotoError({ message: "Sin datos" }));
           //alert("Error en el envío de la data")
         }

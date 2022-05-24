@@ -1,19 +1,39 @@
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import ActionCreators from "../redux/actions";
+import Menu, { SubMenu, Item as MenuItem } from 'rc-menu';
 import {View} from 'react-native-web';
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import Menu_ from '../components/menuComponents/menu'
 import GaleriaImages from '../components/galeriaComponents/GaleriaImages'
 
-class HomeScreen extends Component {
+const HomeScreen =({data})=>{
+ 
+  const ImagesDatas = data
 
-    render() {
         return (
           <View >
-             <Menu_></Menu_>
+             <Menu_ dataJson={ImagesDatas}></Menu_>
+             
           </View>
         );
-      }
 
 }
 
 
-export default (HomeScreen);
+const mapStateToProps = (state) => {
+  // Redux Store --> Component
+  return {
+    ...state.fotoReducer,
+    data:state.fotoReducer.data
+  };
+};
+
+// Map Dispatch To Props (Dispatch Actions To Reducers. Reducers Then Modify The Data And Assign It To Your Props)
+function mapDispatchToProps(dispatch) {
+  const combiner = Object.assign({}, ActionCreators);
+  return bindActionCreators(combiner, dispatch);
+}
+
+// Exports
+export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen);
