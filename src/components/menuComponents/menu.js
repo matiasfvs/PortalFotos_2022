@@ -11,12 +11,14 @@ const ImagesData = require('../../data/galeria.json')
 
 
 
-const MenuComponent = ({getFoto,dataJson}) => {
+const MenuComponent = ({getFoto,dataJson,getZonas}) => {
   const [key, setKey] = useState(0);
   const [imagenesSala,setImagenesSalas] = useState([])
   const [ImagesDatas,setImagenesData] = useState([])
   let dataJsonAPI = []
   
+
+
   function CargaData(){
     dataJsonAPI = dataJson
     console.log('carga data')
@@ -29,6 +31,7 @@ const MenuComponent = ({getFoto,dataJson}) => {
   }
 
   useEffect(()=>{
+    getZonas()
     getFoto()
     const salaFiltrada = ImagesData.filter(js=>key===js.id_categoria )
     setImagenesSalas(salaFiltrada)
