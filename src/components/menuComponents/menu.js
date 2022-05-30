@@ -11,12 +11,13 @@ const ImagesData = require('../../data/galeria.json')
 
 
 
-const MenuComponent = ({getFoto,dataJson,getZonas}) => {
+const MenuComponent = ({getFoto,dataJson,getZonas,dataJsonZonas}) => {
   const [key, setKey] = useState(0);
   const [imagenesSala,setImagenesSalas] = useState([])
   const [ImagesDatas,setImagenesData] = useState([])
   let dataJsonAPI = []
   
+  console.log('zonas',dataJsonZonas)
 
 
   function CargaData(){
@@ -39,34 +40,43 @@ const MenuComponent = ({getFoto,dataJson,getZonas}) => {
   }, [key])
 
  
-  
 
+ function rescataValor(value) {
+  
+    console.log('mi valor',value) // --> 123
+}
  
 
   const funSubMenu = () => {
-    console.log('carga menu')
-    return(
-      
-            zonas.map((v) => {
-                
-           return (<SubMenu className='menu' key={v.id_zona} title={v.desc_zona}>
-               {
-                   v.salas.map((i)=>{
-                  return(  <SubMenu  key={i.id_sala} title={i.desc_sala}> 
-                  {
-                     i.categorias.map((c)=>{
-                      return(  <MenuItem  key={c.id_categoria}> {c.desc_categoria} </MenuItem>)
-                       })
-                  }
-                   </SubMenu>)
-                      
 
-                   })
-               }
-                  </SubMenu>
-                  )
-            })
-    )
+    try {
+      return(
+      
+        dataJsonZonas.map((v) => {
+                  
+             return (<SubMenu className='menu' key={v.id_zona} title={v.desc_zona}>
+                 {
+                     v.salas.map((i)=>{
+                    return(  <SubMenu  key={i.id_sala} title={i.desc_sala}> 
+                    {
+                       i.categorias.map((c)=>{
+                        return(  <MenuItem  key={c.id_pro_categoria} onClick={()=>{rescataValor(c.id_pro_categoria)}}> {c.desc_categoria} </MenuItem>)
+                         })
+                    }
+                     </SubMenu>)
+                        
+  
+                     })
+                 }
+                    </SubMenu>
+                    )
+              })
+      )
+    } catch (error) {
+    console.log('error trycatch', error) 
+    }
+
+
 }
 
 const getMenu = () => {

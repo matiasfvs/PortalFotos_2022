@@ -7,13 +7,13 @@ import React, { useState } from 'react';
 import Menu_ from '../components/menuComponents/menu'
 import GaleriaImages from '../components/galeriaComponents/GaleriaImages'
 
-const HomeScreen =({data})=>{
+const HomeScreen =({data,zonas})=>{
  
   const ImagesDatas = data
 
         return (
           <View >
-             <Menu_ dataJson={ImagesDatas}></Menu_>
+             <Menu_ dataJson={ImagesDatas} dataJsonZonas ={zonas}></Menu_>
              
           </View>
         );
@@ -25,7 +25,9 @@ const mapStateToProps = (state) => {
   // Redux Store --> Component
   return {
     ...state.fotoReducer,
-    data:state.fotoReducer.data
+    data:state.fotoReducer.data,
+    ...state.zonasReducer,
+    zonas:state.zonasReducer.data
   };
 };
 
