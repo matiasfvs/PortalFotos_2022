@@ -10,7 +10,7 @@ import '../../styles.css'
 const ImagesData = require('../../data/galeria.json')
 
 
-const MenuComponent = ({getFoto,data}) => {
+const MenuComponent = ({getFoto,getZonas,dataJsonZonas,semana}) => {
   const [keyCategoria, setkeyCategoria] = useState(0);
   const [keySala, setKeySala] = useState(0);
   const [imagenesSala,setImagenesSalas] = useState([])
@@ -30,9 +30,10 @@ const MenuComponent = ({getFoto,data}) => {
 
   useEffect(async ()=>{
    await getFoto()
+   await getZonas()
+
     console.log('KEYSALA: ',keySala )
     console.log('KEYCAT: ',keyCategoria )
-    
     
     const salaFiltrada = await data.filter(js => 391 === js.id_sala)
     setImagenesSalas(salaFiltrada)
@@ -62,29 +63,44 @@ const MenuComponent = ({getFoto,data}) => {
      // return (arrayImage)
   }
  
-  const funSubMenu = () => {
-    return(
-      
-            zonas.map((v) => {
-                
-           return (<SubMenu className='menu' key={v.id_zona} title={v.desc_zona}>
-               {
-                   v.salas.map((i)=>{
-                  return(  <SubMenu  key={i.id_sala} title={i.desc_sala} onTitleClick={(info) => onTitleClick(info)} > 
-                  {
-                     i.categorias.map((c)=>{
-                      return(  <MenuItem  key={c.id_categoria}> {c.desc_categoria} </MenuItem>)
-                       })
-                  }
-                   </SubMenu>)
-                      
 
-                   })
-               }
-                  </SubMenu>
-                  )
-            })
-    )
+ function rescataValor(value) {
+  
+    console.log('mi valor',value) // --> 123
+}
+ 
+  const funSubMenu = () => {
+
+    const dataZonas= dataJsonZonas.filter(js => js.fecha === semana)
+
+    try {
+      return(
+      
+        dataZonas.map((v) => {
+                  
+             return (<SubMenu className='menu' key={v.id_zona} title={v.desc_zona}>
+                 {
+                     v.salas.map((i)=>{
+                      return(  <SubMenu  key={i.id_sala} title={i.desc_sala} onTitleClick={(info) => onTitleClick(info)} > 
+                    {
+                       i.categorias.map((c)=>{
+                        return(  <MenuItem  key={c.id_pro_categoria} onClick={()=>{rescataValor(c.id_pro_categoria)}}> {c.desc_categoria} </MenuItem>)
+                         })
+                    }
+                     </SubMenu>)
+                        
+  
+                     })
+                 }
+                    </SubMenu>
+                    )
+              })
+      )
+    } catch (error) {
+    console.log('error trycatch', error) 
+    }
+
+
 }
 
 const getMenu = () => {
