@@ -1,21 +1,63 @@
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import ActionCreators from "../redux/actions";
-import Menu, { SubMenu, Item as MenuItem } from 'rc-menu';
-import {View} from 'react-native-web';
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import Menu_ from '../components/menuComponents/menu'
-import GaleriaImages from '../components/galeriaComponents/GaleriaImages'
+import Box from '@mui/material/Box';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 
-const HomeScreen =({data,zonas})=>{
- 
+
+const HomeScreen =({data,zonas,getZonas})=>{
+
+  const [semana, setSemana] = React.useState('');
+
+  const handleChange = (event) => {
+    setSemana(event.target.value);
+    console.log(event.target.value)
+  };
+
+  useEffect(()=>{
+    getZonas()
+  }, [])
+
+  function llenaCombo(){
+    const fechas = [] 
+
+    zonas.forEach(element => {
+    fechas.push(element.fecha)
+    })
+
+    let set = new Set( fechas.map( JSON.stringify ) )
+    let arrSinDuplicaciones = Array.from( set ).map( JSON.parse );
+
+    return(
+      <Box sx={{ minWidth: 120 }}>
+      <FormControl fullWidth>
+        <InputLabel>Semana</InputLabel>
+        <Select
+          value={semana}
+          label="Semana"
+          onChange={handleChange}
+        >
+          <MenuItem value={arrSinDuplicaciones[0]}>{arrSinDuplicaciones[0]}</MenuItem>
+          <MenuItem value={arrSinDuplicaciones[1]}>{arrSinDuplicaciones[1]}</MenuItem>
+        </Select>
+      </FormControl>
+      </Box>
+    )
+
+  }
+
   const ImagesDatas = data
 
         return (
-          <View >
-             <Menu_ dataJson={ImagesDatas} dataJsonZonas ={zonas}></Menu_>
-             
-          </View>
+          <div >
+              {llenaCombo()}
+              <Menu_ dataJson={ImagesDatas} dataJsonZonas ={zonas} semana={semana}></Menu_>
+          </div>
         );
 
 }

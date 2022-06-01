@@ -11,20 +11,10 @@ const ImagesData = require('../../data/galeria.json')
 
 
 
-const MenuComponent = ({getFoto,dataJson,getZonas,dataJsonZonas}) => {
+const MenuComponent = ({getFoto,getZonas,dataJsonZonas,semana}) => {
   const [key, setKey] = useState(0);
   const [imagenesSala,setImagenesSalas] = useState([])
-  const [ImagesDatas,setImagenesData] = useState([])
-  let dataJsonAPI = []
   
-  console.log('zonas',dataJsonZonas)
-
-
-  function CargaData(){
-    dataJsonAPI = dataJson
-    console.log('carga data')
-  }
-
   const onClick = (info) => {
     //console.log(info)
     setKey(info.key)
@@ -36,7 +26,7 @@ const MenuComponent = ({getFoto,dataJson,getZonas,dataJsonZonas}) => {
     getFoto()
     const salaFiltrada = ImagesData.filter(js=>key===js.id_categoria )
     setImagenesSalas(salaFiltrada)
-    console.log(salaFiltrada)
+
   }, [key])
 
  
@@ -46,13 +36,14 @@ const MenuComponent = ({getFoto,dataJson,getZonas,dataJsonZonas}) => {
     console.log('mi valor',value) // --> 123
 }
  
-
   const funSubMenu = () => {
+
+    const dataZonas= dataJsonZonas.filter(js => js.fecha === semana)
 
     try {
       return(
       
-        dataJsonZonas.map((v) => {
+        dataZonas.map((v) => {
                   
              return (<SubMenu className='menu' key={v.id_zona} title={v.desc_zona}>
                  {
