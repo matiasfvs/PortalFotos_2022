@@ -10,38 +10,59 @@ import '../../styles.css'
 const ImagesData = require('../../data/galeria.json')
 
 
-
-const MenuComponent = ({getFoto,dataJson}) => {
-  const [key, setKey] = useState(0);
+const MenuComponent = ({getFoto,data}) => {
+  const [keyCategoria, setkeyCategoria] = useState(0);
+  const [keySala, setKeySala] = useState(0);
   const [imagenesSala,setImagenesSalas] = useState([])
   const [ImagesDatas,setImagenesData] = useState([])
-  let dataJsonAPI = []
-  
-  function CargaData(){
-    dataJsonAPI = dataJson
-    console.log('carga data')
-  }
+ 
 
   const onClick = (info) => {
     //console.log(info)
-    setKey(info.key)
+    setkeyCategoria(info.key)
 
   }
 
-  useEffect(()=>{
-    getFoto()
-    const salaFiltrada = ImagesData.filter(js=>key===js.id_categoria )
+  const onTitleClick = (info) => {
+    //console.log(info)
+    setKeySala(info.key)
+  }
+
+  useEffect(async ()=>{
+   await getFoto()
+    console.log('KEYSALA: ',keySala )
+    console.log('KEYCAT: ',keyCategoria )
+    
+    
+    const salaFiltrada = await data.filter(js => 391 === js.id_sala)
     setImagenesSalas(salaFiltrada)
-    console.log(salaFiltrada)
-  }, [key])
+    console.log('SALA FILTRADA: ' ,salaFiltrada)
 
+    imagenesSala.filter(funFiltraCategoria)
+
+    //const salaCatFiltrada = await imagenesSala.data?.filter( js => 0 === js.id_categoria)
+    //console.log('SALA CAT FILTRADA: ' ,ImagesDatas)
+  }, [keySala ,keyCategoria])
+
+
+  const funFiltraCategoria = (dataSala) => {
+   const arrayImage = []
+
+    dataSala.data.map(function (value) { console.log('DENTRO MAP')
+      if(value.id_categoria === 0){
+        console.log('DENTRO IF')
+          console.log(value.fotos)
+          arrayImage.push(value.fotos)
+        }   
+
+
+      });
+   console.log('arrayImage' ,arrayImage)
+   setImagenesData(arrayImage)
+     // return (arrayImage)
+  }
  
-  
-
- 
-
   const funSubMenu = () => {
-    console.log('carga menu')
     return(
       
             zonas.map((v) => {
@@ -49,7 +70,7 @@ const MenuComponent = ({getFoto,dataJson}) => {
            return (<SubMenu className='menu' key={v.id_zona} title={v.desc_zona}>
                {
                    v.salas.map((i)=>{
-                  return(  <SubMenu  key={i.id_sala} title={i.desc_sala}> 
+                  return(  <SubMenu  key={i.id_sala} title={i.desc_sala} onTitleClick={(info) => onTitleClick(info)} > 
                   {
                      i.categorias.map((c)=>{
                       return(  <MenuItem  key={c.id_categoria}> {c.desc_categoria} </MenuItem>)
@@ -73,6 +94,7 @@ const getMenu = () => {
       onClick={(info) => onClick(info)}>
       {funSubMenu()}
     </Menu>
+    
     );
   }
 
@@ -82,9 +104,12 @@ const getMenu = () => {
       <div className="flexDirection"> 
       <div className="menu">
         {getMenu()}
+
     </div>
         <div className="galeria">
-        <GaleriaImages  id_sala = {key} imagenes= {imagenesSala}/>
+        <GaleriaImages  id_sala = {keySala} imagenes= {ImagesDatas}/>
+      
+        {JSON.stringify(ImagesDatas)}
         </div>
     
       </div>

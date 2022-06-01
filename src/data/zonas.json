@@ -3,10 +3,10 @@
         "id_zona": "1",
         "desc_zona":"Zona Norte",
         "salas":[{
-                "id_sala":"10",
+                "id_sala":391,
                 "desc_sala":"Kika's",
                 "categorias":[{
-                    "id_categoria": "101",
+                    "id_categoria": "0",
                     "desc_categoria": "Gaseosas"
                 },
                 {

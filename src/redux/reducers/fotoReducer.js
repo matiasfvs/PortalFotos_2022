@@ -8,14 +8,14 @@ const initialState= {
 const fotoReducer = (state = initialState, action) =>{
     switch(action.type){
         case types.FOTO_OK:{
-            console.log("DATA FOTO OK");
+           // console.log("DATA FOTO OK");
             return{
                 ...state,
                 data:action.data
             }
         }
         case types.FOTO_ERROR:{
-            console.log("DATA FOTO ERROR");
+            //console.log("DATA FOTO ERROR");
             return{
                 ...state,
                 isLoading:false,
@@ -23,7 +23,7 @@ const fotoReducer = (state = initialState, action) =>{
 
         }
         case types.FOTO_REQUEST:{
-            console.log("DATA FOTO REQUEST");
+           // console.log("DATA FOTO REQUEST");
             return{
                 ...state,
                 isLoading:false,

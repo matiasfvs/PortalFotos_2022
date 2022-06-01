@@ -5,7 +5,7 @@ import '../../stylesGallery.css'
 
 const GaleriaImages = ({imagenes}) => {
 
-  //  console.log('imagenes', imagenes)
+   console.log('imagenes', imagenes)
 
     const [currentImage, setCurrentImage] = useState(0);
     const [isViewerOpen, setIsViewerOpen] = useState(false);    
@@ -24,7 +24,7 @@ const GaleriaImages = ({imagenes}) => {
     return(
 
              <div>
-      {imagenes[0]?.foto?.map((src, index) => (
+      {imagenes[0]?.map((src, index) => (
         <img
         src={src}
         onClick={() => openImageViewer(index)}
