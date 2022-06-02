@@ -10,7 +10,7 @@ import '../../styles.css'
 const ImagesData = require('../../data/galeria.json')
 
 
-const MenuComponent = ({getFoto,getZonas,dataJsonZonas,semana}) => {
+const MenuComponent = ({getFoto,getZonas,dataJsonZonas,semana, data}) => {
   const [keyCategoria, setkeyCategoria] = useState(0);
   const [keySala, setKeySala] = useState(0);
   const [imagenesSala,setImagenesSalas] = useState([])
@@ -34,8 +34,8 @@ const MenuComponent = ({getFoto,getZonas,dataJsonZonas,semana}) => {
 
     console.log('KEYSALA: ',keySala )
     console.log('KEYCAT: ',keyCategoria )
-    
-    const salaFiltrada = await data.filter(js => 391 === js.id_sala)
+  console.log('JS SALA' , data[0].id_sala)    
+    const salaFiltrada = await data.filter(js => keySala == js.id_sala)
     setImagenesSalas(salaFiltrada)
     console.log('SALA FILTRADA: ' ,salaFiltrada)
 
@@ -50,7 +50,7 @@ const MenuComponent = ({getFoto,getZonas,dataJsonZonas,semana}) => {
    const arrayImage = []
 
     dataSala.data.map(function (value) { console.log('DENTRO MAP')
-      if(value.id_categoria === 0){
+      if(value.id_categoria == keyCategoria){
         console.log('DENTRO IF')
           console.log(value.fotos)
           arrayImage.push(value.fotos)
@@ -58,7 +58,7 @@ const MenuComponent = ({getFoto,getZonas,dataJsonZonas,semana}) => {
 
 
       });
-   console.log('arrayImage' ,arrayImage)
+   //console.log('arrayImage' ,arrayImage)
    setImagenesData(arrayImage)
      // return (arrayImage)
   }
@@ -125,7 +125,7 @@ const getMenu = () => {
         <div className="galeria">
         <GaleriaImages  id_sala = {keySala} imagenes= {ImagesDatas}/>
       
-        {JSON.stringify(ImagesDatas)}
+        {keySala}
         </div>
     
       </div>

@@ -8,7 +8,7 @@ const initialState= {
 const fotoReducer = (state = initialState, action) =>{
     switch(action.type){
         case types.FOTO_OK:{
-           // console.log("DATA FOTO OK");
+           console.log("DATA FOTO OK");
             return{
                 ...state,
                 data:action.data
