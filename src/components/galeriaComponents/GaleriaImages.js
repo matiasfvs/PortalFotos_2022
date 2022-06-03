@@ -5,7 +5,6 @@ import '../../stylesGallery.css'
 
 const GaleriaImages = ({imagenes}) => {
 
-   console.log('imagenes', imagenes)
 
     const [currentImage, setCurrentImage] = useState(0);
     const [isViewerOpen, setIsViewerOpen] = useState(false);    
@@ -36,7 +35,7 @@ const GaleriaImages = ({imagenes}) => {
 
              {isViewerOpen && (
                 <ImageViewer
-                src={imagenes[0].foto}
+                src={imagenes[0]}
                 currentIndex={currentImage}
                 onClose={closeImageViewer}
                 disableScroll={false}
