@@ -36,7 +36,7 @@ const GaleriaImages = ({imagenes}) => {
 
              {isViewerOpen && (
                 <ImageViewer
-                src={imagenes[0].foto}
+                src={imagenes[0]}
                 currentIndex={currentImage}
                 onClose={closeImageViewer}
                 disableScroll={false}
