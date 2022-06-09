@@ -17,9 +17,9 @@ const MenuComponent = ({getFoto,getZonas,dataJsonZonas,semana, data}) => {
   const [ImagesDatas,setImagenesData] = useState([])
  
 
-  const onClick = (info) => {
-    //console.log(info)
-    setkeyCategoria(info.key)
+  const onClick = (info) => {    
+    setkeyCategoria(info)
+    //console.log(keyCategoria)
 
   }
 
@@ -31,43 +31,30 @@ const MenuComponent = ({getFoto,getZonas,dataJsonZonas,semana, data}) => {
   useEffect(async ()=>{
    await getFoto()
    await getZonas()
-
-    console.log('KEYSALA: ',keySala )
-    console.log('KEYCAT: ',keyCategoria )
-  console.log('JS SALA' , data[0].id_sala)    
+ 
     const salaFiltrada = await data.filter(js => keySala == js.id_sala)
     setImagenesSalas(salaFiltrada)
-    console.log('SALA FILTRADA: ' ,salaFiltrada)
 
     imagenesSala.filter(funFiltraCategoria)
 
-    //const salaCatFiltrada = await imagenesSala.data?.filter( js => 0 === js.id_categoria)
-    //console.log('SALA CAT FILTRADA: ' ,ImagesDatas)
   }, [keySala ,keyCategoria])
 
 
   const funFiltraCategoria = (dataSala) => {
    const arrayImage = []
 
-    dataSala.data.map(function (value) { console.log('DENTRO MAP')
+   dataSala.data.map(function (value) {
+       console.log('DENTRO MAP')
       if(value.id_categoria == keyCategoria){
-        console.log('DENTRO IF')
-          console.log(value.fotos)
-          arrayImage.push(value.fotos)
-        }   
-
-
+        arrayImage.push(value.fotos)
+      }
+      
       });
-   //console.log('arrayImage' ,arrayImage)
-   setImagenesData(arrayImage)
+       //console.log('arrayImage' ,arrayImage)
+      setImagenesData(arrayImage)
      // return (arrayImage)
   }
  
-
- function rescataValor(value) {
-  
-    console.log('mi valor',value) // --> 123
-}
  
   const funSubMenu = () => {
 
@@ -84,7 +71,7 @@ const MenuComponent = ({getFoto,getZonas,dataJsonZonas,semana, data}) => {
                       return(  <SubMenu  key={i.id_sala} title={i.desc_sala} onTitleClick={(info) => onTitleClick(info)} > 
                     {
                        i.categorias.map((c)=>{
-                        return(  <MenuItem  key={c.id_pro_categoria} onClick={()=>{rescataValor(c.id_pro_categoria)}}> {c.desc_categoria} </MenuItem>)
+                        return(  <MenuItem  key={c.key_menu} onClick={()=>{onClick(c.id_pro_categoria)}}> {c.desc_categoria} </MenuItem>)
                          })
                     }
                      </SubMenu>)
@@ -106,8 +93,7 @@ const MenuComponent = ({getFoto,getZonas,dataJsonZonas,semana, data}) => {
 const getMenu = () => {
 
     return (
-      <Menu    mode="inline"
-      onClick={(info) => onClick(info)}>
+      <Menu    mode="inline">
       {funSubMenu()}
     </Menu>
     

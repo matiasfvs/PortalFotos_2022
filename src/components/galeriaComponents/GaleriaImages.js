@@ -5,7 +5,6 @@ import '../../stylesGallery.css'
 
 const GaleriaImages = ({imagenes}) => {
 
-   console.log('imagenes', imagenes)
 
     const [currentImage, setCurrentImage] = useState(0);
     const [isViewerOpen, setIsViewerOpen] = useState(false);    
