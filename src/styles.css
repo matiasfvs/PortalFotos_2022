@@ -71,7 +71,6 @@
 
 .comboStyle{
   display: flex;
-  padding:10px;
   padding-right: 25%;
   color:white;
   flex:1;
@@ -79,8 +78,13 @@
   font-size: 20px;
 }
 .loginOff{
-  flex:1;
-  margin-left: 30px;
+  display: flex;
+  padding:10px;
+  flex-direction: column;
+  padding-right:5%;
+  color:white;
+  align-items: center;
+  font-size: 17px;
 }
 .logoStyle{
   flex:1;
