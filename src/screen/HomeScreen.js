@@ -67,7 +67,7 @@ const HomeScreen =({data,zonas,getZonas})=>{
           <>
           <div className ='bannerMenu'>
               <div className='comboStyle'>Seleccione una Semana :  {llenaCombo()}</div>
-              <div className='logoStyle'>DIV LOGO</div>
+              <div className='logoStyle'></div>
               <div className='loginOff'>
               <text>Cerrar Sesión</text> 
                 <a href="/" onClick={()=>handleLogOut()} color="white">
