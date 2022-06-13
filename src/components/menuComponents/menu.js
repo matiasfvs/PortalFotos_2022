@@ -110,7 +110,6 @@ const getMenu = () => {
 
     if(isLoading){
      return( <LinearProgress /> ) 
-        console.log('IF LOADING')
     }
     else{ return(<GaleriaImages  id_sala = {keySala} imagenes= {ImagesDatas}/>)  }
 
