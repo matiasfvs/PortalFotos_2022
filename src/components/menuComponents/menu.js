@@ -7,28 +7,34 @@ import zonas from '../../data/zonas.json'
 import GaleriaImages from '../galeriaComponents/GaleriaImages'
 import 'rc-menu/assets/index.css';
 import '../../styles.css'
+import LinearProgress from '@mui/material/LinearProgress';
 const ImagesData = require('../../data/galeria.json')
 
 
-const MenuComponent = ({getFoto,getZonas,dataJsonZonas,semana, data}) => {
+const MenuComponent = ({getFoto,getZonas,dataJsonZonas,semana, data, isLoading}) => {
   const [keyCategoria, setkeyCategoria] = useState(0);
   const [keySala, setKeySala] = useState(0);
   const [imagenesSala,setImagenesSalas] = useState([])
   const [ImagesDatas,setImagenesData] = useState([])
  
 
-  const onClick = (info) => {    
-    setkeyCategoria(info)
-    //console.log(keyCategoria)
+  const onClick = (info) => {  
+    setkeyCategoria(null)
+    setImagenesData([])  
+    setkeyCategoria('CATEGO: ',info)
+    console.log(keyCategoria)
 
   }
 
   const onTitleClick = (info) => {
-    //console.log(info)
-    setKeySala(info.key)
+    console.log(info.key)
+    setKeySala(null)
+    setImagenesData([])
+    setKeySala('SALA: ',info.key)
   }
 
   useEffect(async ()=>{
+   setImagenesData([])
    await getFoto()
    await getZonas()
  
@@ -100,6 +106,16 @@ const getMenu = () => {
     );
   }
 
+  const getGaleria = () => {
+
+    if(isLoading){
+     return( <LinearProgress /> ) 
+        console.log('IF LOADING')
+    }
+    else{ return(<GaleriaImages  id_sala = {keySala} imagenes= {ImagesDatas}/>)  }
+
+  }
+
 
     return (
     <div className="container">
@@ -109,8 +125,9 @@ const getMenu = () => {
 
     </div>
         <div className="galeria">
-        <GaleriaImages  id_sala = {keySala} imagenes= {ImagesDatas}/>
-      
+
+        {getGaleria()}
+        {keyCategoria}
         {keySala}
         </div>
     
@@ -129,7 +146,8 @@ const mapStateToProps = (state) => {
   // Redux Store --> Component
   return {
     ...state.fotoReducer,
-    data:state.fotoReducer.data
+    data:state.fotoReducer.data,
+    isLoading:state.fotoReducer.isLoading
   };
 };
 

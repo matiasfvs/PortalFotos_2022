@@ -1,7 +1,8 @@
 import * as types from '../constants/redux_constants'
 
 const initialState= {
-    data:[]
+    data:[],
+    isLoading: true,
 }
 
 
@@ -11,7 +12,8 @@ const fotoReducer = (state = initialState, action) =>{
            console.log("DATA FOTO OK");
             return{
                 ...state,
-                data:action.data
+                data:action.data,
+                isLoading: false,
             }
         }
         case types.FOTO_ERROR:{
@@ -20,13 +22,12 @@ const fotoReducer = (state = initialState, action) =>{
                 ...state,
                 isLoading:false,
             }
-
         }
         case types.FOTO_REQUEST:{
            // console.log("DATA FOTO REQUEST");
             return{
                 ...state,
-                isLoading:false,
+                isLoading:true,
             }
 
         }
