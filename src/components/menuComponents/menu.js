@@ -19,18 +19,18 @@ const MenuComponent = ({getFoto,getZonas,dataJsonZonas,semana, data, isLoading})
  
 
   const onClick = (info) => {  
-    setkeyCategoria(null)
+    setkeyCategoria()
     setImagenesData([])  
-    setkeyCategoria('CATEGO: ',info)
-    console.log(keyCategoria)
+    setkeyCategoria(info)
+    console.log('keycat',keyCategoria)
 
   }
 
   const onTitleClick = (info) => {
     console.log(info.key)
-    setKeySala(null)
+    setKeySala()
     setImagenesData([])
-    setKeySala('SALA: ',info.key)
+    setKeySala(info.key)
   }
 
   useEffect(async ()=>{
