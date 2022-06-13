@@ -2,37 +2,30 @@
   display: flex;
   background-color: #2a8891;
   flex-direction: column;
-  height:1440px;
-  width: 870;
+  height: 1000px;
+  width: 100%;
 }
 .menu{
   flex: 1;
-  color:whitesmoke;
+  color:navajowhite;
   width: 100%;
-  height: auto;
+  height: 100%;
   padding: 3px; 
 
 }
-
 .galeria{
   flex: 3;
   background-color: white;
-  width: 100%;
-  height: 100%;
+
 }
 .imagen{
   padding: 2%;
+  width: 50mm;
+  height: 50mm;
 }
 
-.banner{
-  display: flex;
-  height: 80px;
-}
 .flexDirection{
   display: flex;
   flex-direction: row;
-  height:1440px;
-}
-.horiz-menu div:hover { /* Increase the specificity */
-  color: red;
+  height:100%;
 }

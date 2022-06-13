@@ -27,7 +27,6 @@ const GaleriaImages = ({imagenes}) => {
         <img
         src={src}
         onClick={() => openImageViewer(index)}
-        width="300"
         key={index}
         className='imagen'
         alt=""
