@@ -3,10 +3,7 @@ import { bindActionCreators } from "redux";
 import ActionCreators from "../redux/actions";
 import React, { useEffect } from 'react';
 import Menu_ from '../components/menuComponents/menu'
-import Box from '@mui/material/Box';
-import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import '../styles.css'
 import {makeStyles} from '@material-ui/core'
@@ -22,15 +19,15 @@ const useStyles = makeStyles({
 const HomeScreen =({data,zonas,getZonas})=>{
 
   const [semana, setSemana] = React.useState('');
+  const ImagesDatas = data
   const classes = useStyles();
 
   const handleLogOut = async () => {
-    console.log('cerrar sesion')
+    localStorage.clear();
   }
 
   const handleChange = (event) => {
     setSemana(event.target.value);
-    console.log(event.target.value)
   };
 
   useEffect(()=>{
@@ -39,14 +36,11 @@ const HomeScreen =({data,zonas,getZonas})=>{
 
   function llenaCombo(){
     const fechas = [] 
-
     zonas.forEach(element => {
     fechas.push(element.fecha)
     })
-
     let set = new Set( fechas.map( JSON.stringify ) )
-    let arrSinDuplicaciones = Array.from( set ).map( JSON.parse );
-
+    let arrSinDuplicacion= Array.from( set ).map( JSON.parse );
     return(
         <Select
           value={semana}
@@ -54,14 +48,13 @@ const HomeScreen =({data,zonas,getZonas})=>{
           onChange={handleChange}
           className={classes.InputLabel}
         >
-          <MenuItem value={arrSinDuplicaciones[0]}>{arrSinDuplicaciones[0]}</MenuItem>
-          <MenuItem value={arrSinDuplicaciones[1]}>{arrSinDuplicaciones[1]}</MenuItem>
+          <MenuItem value={arrSinDuplicacion[0]}>{arrSinDuplicacion[0]}</MenuItem>
+          <MenuItem value={arrSinDuplicacion[1]}>{arrSinDuplicacion[1]}</MenuItem>
         </Select>
     )
 
   }
   //
-  const ImagesDatas = data
 
         return (
           <>
