@@ -19,8 +19,6 @@ const MenuComponent = ({getFoto,getZonas,dataJsonZonas,semana, data, isLoading})
  
 
   const onClick = (info) => {  
-    setkeyCategoria()
-    setImagenesData([])  
     setkeyCategoria(info)
     console.log('keycat',keyCategoria)
 
@@ -30,6 +28,8 @@ const MenuComponent = ({getFoto,getZonas,dataJsonZonas,semana, data, isLoading})
     console.log(info.key)
     setKeySala()
     setImagenesData([])
+    setkeyCategoria()
+    setImagenesData([])  
     setKeySala(info.key)
   }
 
@@ -43,7 +43,7 @@ const MenuComponent = ({getFoto,getZonas,dataJsonZonas,semana, data, isLoading})
 
     imagenesSala.filter(funFiltraCategoria)
 
-  }, [keySala ,keyCategoria])
+  }, [keySala ,keyCategoria,semana])
 
 
   const funFiltraCategoria = (dataSala) => {
@@ -124,10 +124,7 @@ const getMenu = () => {
 
     </div>
         <div className="galeria">
-
         {getGaleria()}
-        {keyCategoria}
-        {keySala}
         </div>
     
       </div>
