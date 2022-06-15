@@ -16,7 +16,7 @@ const MenuComponent = ({getFoto,getZonas,dataJsonZonas,semana, data, isLoading})
   const [keySala, setKeySala] = useState(0);
   const [imagenesSala,setImagenesSalas] = useState([])
   const [ImagesDatas,setImagenesData] = useState([])
- 
+  const token = localStorage.getItem('token')
 
   const onClick = (info) => {  
     setkeyCategoria(info)
@@ -35,8 +35,8 @@ const MenuComponent = ({getFoto,getZonas,dataJsonZonas,semana, data, isLoading})
 
   useEffect(async ()=>{
    setImagenesData([])
-   await getFoto()
-   await getZonas()
+   await getFoto(token)
+   await getZonas(token)
  
     const salaFiltrada = await data.filter(js => keySala == js.id_sala)
     setImagenesSalas(salaFiltrada)

@@ -29,13 +29,15 @@ axios.defaults.timeout = API_TIMEOUT;
     };
   };
   
- export const getZonas = () => {
+ export const getZonas = (token) => {
    //console.log('nombre tabla en el action')
     return async (dispatch) => {
       dispatch(zonasRequest());
       try {
         const { data: res } = await axios.get("/portalzonas",{
-
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         })
         //console.log('res antes del if:',res)
         if (res) {

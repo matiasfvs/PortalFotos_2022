@@ -29,13 +29,15 @@ axios.defaults.timeout = API_TIMEOUT;
     };
   };
   
- export const getFoto = () => {
+ export const getFoto = (token) => {
    //console.log('nombre tabla en el action')
     return async (dispatch) => {
       dispatch(fotoRequest());
       try {
         const { data: res } = await axios.get("/portalfotospdv",{
-
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         })
         //console.log('res antes del if:',res)
         if (res) {
